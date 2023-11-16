@@ -62,6 +62,7 @@ export default class Loaders {
       const loader = this.loaders.get(name);
       if (!loader) continue;
       const ctx: LoaderContext = { ...context, options };
+      //eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       if (loader.alwaysProcess || matchFile(ctx.id, loader.test)) {
         payload = await workQueue.add(loader.process.bind(ctx, payload));
       }

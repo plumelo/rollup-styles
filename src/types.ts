@@ -1,5 +1,5 @@
 import * as postcss from "postcss";
-import cssnano from "cssnano";
+import { Options as CssNanoOptions } from "cssnano";
 import { ImportOptions } from "./loaders/postcss/import";
 import { UrlOptions } from "./loaders/postcss/url";
 import { ModulesOptions } from "./loaders/postcss/modules";
@@ -200,7 +200,7 @@ export interface Options {
    * [cssnano](https://github.com/cssnano/cssnano)
    * @default false
    */
-  minimize?: boolean | cssnano.CssNanoOptions;
+  minimize?: boolean | CssNanoOptions;
   /**
    * Enable/disable or configure sourcemaps
    * @default false

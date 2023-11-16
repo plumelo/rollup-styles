@@ -98,7 +98,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const msg of res.messages)
       switch (msg.type) {
         case "warning":
-          this.warn({ name: msg.plugin, message: msg.text as string });
+          this.warn({ plugin: msg.plugin, message: msg.text as string });
           break;
 
         case "icss":

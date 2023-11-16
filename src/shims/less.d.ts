@@ -42,6 +42,7 @@ declare namespace less {
     color?: boolean;
     ieCompat?: boolean;
     javascriptEnabled?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     dumpLineNumbers?: "comment" | string;
     rootpath?: string;
     math?: "always" | "strict" | "parens-division" | "parens" | "strict-legacy" | number;

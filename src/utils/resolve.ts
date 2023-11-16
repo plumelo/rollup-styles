@@ -1,8 +1,8 @@
-import resolver, { sync, AsyncOpts, SyncOpts } from "resolve";
+import resolver, { sync, AsyncOpts, SyncOpts, PackageJSON } from "resolve";
 import { resolve as resolveExports, legacy as resolveFields } from "resolve.exports";
 import arrayFmt from "./array-fmt";
 
-type Package = { main: string; [field: string]: unknown };
+interface Package extends PackageJSON {}
 type PackageFilterFn = (pkg: Package, pkgfile: string) => Package;
 
 export interface ResolveOpts {

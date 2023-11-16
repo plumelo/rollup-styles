@@ -187,7 +187,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           to = normalizePath(assetDir, to);
           res.messages.push({ plugin: name, type: "asset", to, source });
         }
-
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         decl.value = parsed.toString();
       }
     },

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import fs from "fs-extra";
 import { rollup } from "rollup";
 import { RawSourceMap } from "source-map-js";
@@ -343,7 +344,7 @@ validateMany("extract", [
     title: "preserve-modules",
     input: "simple/index.js",
     options: { mode: "extract" },
-    inputOpts: { preserveModules: true },
+    outputOpts: { preserveModules: true },
   },
   {
     title: "absolute-path-fail",
@@ -585,7 +586,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: { preserveModules: true },
+    outputOpts: { preserveModules: true },
   },
   {
     title: "preserve-modules-single",
@@ -595,7 +596,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: { preserveModules: true },
+    outputOpts: { preserveModules: true },
   },
   {
     title: "preserve-modules-multi-entry",
@@ -605,7 +606,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: { preserveModules: true },
+    outputOpts: { preserveModules: true },
   },
   {
     title: "multi-entry",
@@ -633,7 +634,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: {
+    outputOpts: {
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
@@ -650,7 +651,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: {
+    outputOpts: {
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
@@ -667,7 +668,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: {
+    outputOpts: {
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
@@ -684,7 +685,7 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    inputOpts: {
+    outputOpts: {
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";

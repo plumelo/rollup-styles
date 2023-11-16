@@ -17,8 +17,8 @@ test("noop", async () => {
 });
 
 describe("load-module", () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const loadModule = jest.requireActual("../src/utils/load-module")
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     .default as typeof loadModuleMock;
 
   test("wrong path", () => {

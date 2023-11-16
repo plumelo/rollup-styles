@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";
-import { Processor } from "postcss";
 import cssnano from "cssnano";
 import { LoaderContext, Extracted } from "./loaders/types";
 import { ExtractedData, Options, PostCSSLoaderOptions } from "./types";
@@ -150,6 +150,7 @@ export default (options: Options = {}): Plugin => {
     },
 
     async generateBundle(opts, bundle) {
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- either `file` or `dir` are always present
@@ -277,7 +278,7 @@ export default (options: Options = {}): Plugin => {
         // Perform minimization on the extracted file
         if (loaderOpts.minimize) {
           const cssnanoOpts = typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {};
-          const minifier = cssnano(cssnanoOpts) as Processor;
+          const minifier = cssnano(cssnanoOpts);
 
           const resMin = await minifier.process(res.css, {
             from: res.name,
@@ -304,8 +305,8 @@ export default (options: Options = {}): Plugin => {
             typeof opts.assetFileNames === "string"
               ? normalizePath(path.dirname(opts.assetFileNames))
               : typeof opts.assetFileNames === "function"
-              ? normalizePath(path.dirname(opts.assetFileNames(cssFile)))
-              : "assets"; // Default for Rollup v2
+                ? normalizePath(path.dirname(opts.assetFileNames(cssFile)))
+                : "assets"; // Default for Rollup v2
 
           const map = mm(res.map)
             .modify(m => (m.file = path.basename(fileName)))
