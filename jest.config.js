@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "path";
 
 const modules = [
   "rollup-plugin-lit-css",
@@ -10,7 +10,7 @@ const modulesStr = modules.map(m => `.*${m}`).join("|");
 const transformIgnorePatterns = [path.join("node_modules", `(?!(${modulesStr})`, ")")];
 
 /** @type {import('ts-jest').InitialOptionsTsJest} */
-module.exports = {
+export default {
   testEnvironment: "node",
   transform: { "^.+\\.tsx?$": "ts-jest", "^.+\\.jsx?$": "babel-jest" },
   transformIgnorePatterns,
@@ -21,6 +21,6 @@ module.exports = {
     "<rootDir>/__tests__/*.[jt]s?(x)",
     "<rootDir>/__tests__/helpers/*.[jt]s?(x)",
     "!**/*.d.ts",
-    "!**/.eslintrc.js",
+    "!**/.eslintrc.cjs",
   ],
 };

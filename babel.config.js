@@ -1,4 +1,4 @@
-module.exports = api => {
+export default api => {
   api.cache.invalidate(() => process.env.NODE_ENV === "production");
 
   const presets = [["@babel/preset-env", { modules: false, targets: { node: "12" } }]];

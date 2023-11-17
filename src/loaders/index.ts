@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import PQueue from "p-queue";
 import { Loader, LoaderContext, Payload } from "./types";
 import postcssLoader from "./postcss";

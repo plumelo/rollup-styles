@@ -10,11 +10,11 @@ import json from "@rollup/plugin-json";
 import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import { URL } from 'url';
-import pkg from "./package.json" assert { type: 'json' };
+import { URL } from "url";
+import pkg from "./package.json" assert { type: "json" };
 
 const extensions = [".ts", ".mjs", ".js", ".cjs", ".json"];
-const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = new URL(".", import.meta.url).pathname;
 
 /** @type {import('rollup').RollupOptions[]} */
 const config = [

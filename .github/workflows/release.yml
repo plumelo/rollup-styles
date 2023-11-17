@@ -12,27 +12,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: pnpm
+          cache: npm
 
       - name: Install dependencies
-        run: |
-          pnpm -v
-          pnpm config set enable-pre-post-scripts true
-          pnpm i --frozen-lockfile
+        run: npm ci
         env:
           CI: true
 
       - name: Release
-        run: pnpm run release
+        run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
