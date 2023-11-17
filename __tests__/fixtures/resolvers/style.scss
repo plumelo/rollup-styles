@@ -7,7 +7,10 @@
   font-family: "Demo";
   font-style: normal;
   font-weight: 400;
-  src: local("Demo"), local("Demo-Regular"), url("fonts/Demo-webfont.woff") format("woff");
+  src:
+    local("Demo"),
+    local("Demo-Regular"),
+    url("fonts/Demo-webfont.woff") format("woff");
 }
 
 .ignore-data-uri {

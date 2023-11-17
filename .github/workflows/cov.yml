@@ -8,33 +8,23 @@ jobs:
 
     steps:
       - name: Code checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
-          cache: "pnpm"
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: |
-          pnpm -v
-          pnpm config set enable-pre-post-scripts true
-          pnpm i --frozen-lockfile
-        env:
-          CI: true
+        run: npm ci
 
       - name: Test /w coverage
-        run: pnpm t -- --coverage
+        run: npm run test -- --coverage
         env:
-          CI: true
+          NODE_OPTIONS: --experimental-vm-modules
 
       - name: Submit coverage to codecov.io
         uses: codecov/codecov-action@v2

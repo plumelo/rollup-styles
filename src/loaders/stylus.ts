@@ -1,7 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
 import { mm } from "../utils/sourcemap";
-import loadModule from "../utils/load-module";
 import { normalizePath } from "../utils/path";
 import { Loader } from "./types";
 import { RawSourceMap } from "source-map-js";
@@ -14,7 +13,7 @@ const loader: Loader<StylusLoaderOptions> = {
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
     const options = { ...this.options };
-    const stylus = loadModule("stylus") as stylus.Stylus;
+    const stylus = (await import("stylus").then(m => m.default)) as stylus.Stylus;
     if (!stylus)
       throw new Error("You need to install `stylus` package in order to process Stylus files");
 

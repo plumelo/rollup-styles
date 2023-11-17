@@ -4,13 +4,17 @@ import { getUrlOfPartial, normalizeUrl } from "../../utils/url";
 
 const extensions = [".less", ".css"];
 
-const getStylesFileManager = (less: less.Less): less.FileManager =>
-  new (class extends less.AbstractFileManager implements less.FileManager {
+const getStylesFileManager = (less: LessStatic): Less.FileManager =>
+  new (class extends less.FileManager implements Less.FileManager {
     supports(): boolean {
       return true;
     }
 
-    async loadFile(filename: string, filedir: string, opts: less.Options): Promise<less.File> {
+    async loadFile(
+      filename: string,
+      filedir: string,
+      opts: Less.Options,
+    ): Promise<Less.FileLoadResult> {
       const url = normalizeUrl(filename);
       const partialUrl = getUrlOfPartial(url);
       const options = { caller: "Less importer", basedirs: [filedir], extensions };
@@ -21,7 +25,7 @@ const getStylesFileManager = (less: less.Less): less.FileManager =>
     }
   })();
 
-const importer: less.Plugin = {
+const importer: Less.Plugin = {
   install(less, pluginManager) {
     pluginManager.addFileManager(getStylesFileManager(less));
   },

@@ -82,7 +82,7 @@ const plugin: PluginCreator<ImportOptions> = (options = {}) => {
           url = isString ? urlNode.nodes[0].value : valueParser.stringify(urlNode.nodes);
         }
 
-        url = url.replace(/^\s+|\s+$/g, "");
+        url = url.replaceAll(/^\s+|\s+$/g, "");
 
         // Resolve aliases
         for (const [from, to] of Object.entries(alias)) {
@@ -126,8 +126,11 @@ const plugin: PluginCreator<ImportOptions> = (options = {}) => {
           const imported = await postcss(plugin(options)).process(source, { ...opts, from });
           res.messages.push(...imported.messages, { plugin: name, type: "dependency", file: from });
 
-          if (!imported.root) rule.remove();
-          else rule.replaceWith(imported.root);
+          if (imported.root) {
+            rule.replaceWith(imported.root);
+          } else {
+            rule.remove();
+          }
         } catch {
           rule.warn(res, `Unresolved \`@import\` in \`${rule.toString()}\``);
         }

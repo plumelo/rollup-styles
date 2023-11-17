@@ -71,7 +71,7 @@ export default (options: Options = {}): Plugin => {
       if (!isIncluded(id) || !loaders.isSupported(id)) return null;
 
       // Skip empty files
-      if (code.replace(/\s/g, "") === "") return null;
+      if (code.replaceAll(/\s/g, "") === "") return null;
 
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
@@ -153,7 +153,6 @@ export default (options: Options = {}): Plugin => {
       // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- either `file` or `dir` are always present
       const dir = opts.dir ?? path.dirname(opts.file!);
       const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
       const manual = chunks.filter(c => !c.facadeModuleId);

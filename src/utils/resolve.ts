@@ -1,10 +1,10 @@
 import resolver, { AsyncOpts, SyncOpts, PackageJSON } from "resolve";
 import { resolve as resolveExports, legacy as resolveFields } from "resolve.exports";
 import arrayFmt from "./array-fmt";
-import { dirname } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const baseDir = path.dirname(fileURLToPath(import.meta.url));
 
 interface Package extends PackageJSON {}
 type PackageFilterFn = (pkg: Package, pkgfile: string) => Package;
@@ -69,7 +69,7 @@ export const packageFilterBuilder: PackageFilterBuilderFn = (opts = {}) => {
 
 const defaultOpts: ResolveDefaultOpts = {
   caller: "Resolver",
-  basedirs: [__dirname],
+  basedirs: [baseDir],
   extensions: [".mjs", ".js", ".cjs", ".json"],
   preserveSymlinks: true,
   packageFilter: packageFilterBuilder(),

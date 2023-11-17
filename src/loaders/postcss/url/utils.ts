@@ -18,14 +18,14 @@ export const walkUrls = (
       const { nodes } = node;
       const [urlNode] = nodes;
       const url = urlNode?.type === "string" ? urlNode.value : valueParser.stringify(nodes);
-      callback(url.replace(/^\s+|\s+$/g, ""), urlNode);
+      callback(url.replaceAll(/^\s+|\s+$/g, ""), urlNode);
       return;
     }
 
     if (imageSetFuncRe.test(node.value)) {
       for (const nNode of node.nodes) {
         if (nNode.type === "string") {
-          callback(nNode.value.replace(/^\s+|\s+$/g, ""), nNode);
+          callback(nNode.value.replaceAll(/^\s+|\s+$/g, ""), nNode);
           continue;
         }
 
@@ -33,7 +33,7 @@ export const walkUrls = (
           const { nodes } = nNode;
           const [urlNode] = nodes;
           const url = urlNode?.type === "string" ? urlNode.value : valueParser.stringify(nodes);
-          callback(url.replace(/^\s+|\s+$/g, ""), urlNode);
+          callback(url.replaceAll(/^\s+|\s+$/g, ""), urlNode);
           continue;
         }
       }

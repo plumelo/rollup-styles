@@ -16,7 +16,7 @@ const loader: Loader<SASSLoaderOptions> = {
   test: /\.(sass|scss)$/i,
   async process({ code, map }) {
     const options = { ...this.options };
-    const [sass, type] = loadSass(options.impl);
+    const [sass, type] = await loadSass(options.impl);
     const sync = options.sync ?? type !== "node-sass";
     const importers = [sync ? importerSync : importer];
 

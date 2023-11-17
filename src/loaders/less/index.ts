@@ -1,18 +1,17 @@
 import path from "path";
-import loadModule from "../../utils/load-module";
 import { normalizePath } from "../../utils/path";
 import { Loader } from "../types";
 import importer from "./importer";
 
 /** Options for Less loader */
-export interface LESSLoaderOptions extends Record<string, unknown>, less.PublicOptions {}
+export interface LESSLoaderOptions extends Record<string, unknown>, Less.Options {}
 
 const loader: Loader<LESSLoaderOptions> = {
   name: "less",
   test: /\.less$/i,
   async process({ code, map }) {
     const options = { ...this.options };
-    const less = loadModule("less") as less.Less;
+    const less = await import("less").then(m => m.default);
     if (!less) throw new Error("You need to install `less` package in order to process Less files");
 
     const plugins = [importer];

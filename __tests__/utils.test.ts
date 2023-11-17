@@ -1,3 +1,4 @@
+import { jest } from "@jest/globals";
 import postcss from "postcss";
 import Loaders from "../src/loaders";
 import postcssNoop from "../src/loaders/postcss/noop";
@@ -8,8 +9,7 @@ import { humanlizePath } from "../src/utils/path";
 
 import { fixture } from "./helpers";
 
-jest.mock("../src/utils/load-module", () => jest.fn());
-import loadModuleMock from "../src/utils/load-module";
+import loadModule from "../src/utils/load-module";
 
 test("noop", async () => {
   const { css } = await postcss(postcssNoop).process(".foo{color:red}", { from: "simple.css" });
@@ -17,10 +17,6 @@ test("noop", async () => {
 });
 
 describe("load-module", () => {
-  const loadModule = jest.requireActual("../src/utils/load-module")
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    .default as typeof loadModuleMock;
-
   test("wrong path", () => {
     expect(loadModule("totallyWRONGPATH/here")).toBeUndefined();
   });
@@ -36,6 +32,7 @@ describe("load-module", () => {
 
 describe("less", () => {
   test("not found", async () => {
+    jest.unstable_mockModule("less", () => jest.fn());
     const loaders = new Loaders({ use: [["less", {}]], loaders: [], extensions: [""] });
     await expect(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
@@ -46,6 +43,7 @@ describe("less", () => {
 
 describe("stylus", () => {
   test("not found", async () => {
+    jest.unstable_mockModule("stylus", () => jest.fn());
     const loaders = new Loaders({ use: [["stylus", {}]], loaders: [], extensions: [""] });
     await expect(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
@@ -55,12 +53,14 @@ describe("stylus", () => {
 });
 
 describe("load-sass", () => {
-  test("wrong implementation", () => {
-    expect(() => loadSass("swass")).toThrowErrorMatchingSnapshot();
+  test("wrong implementation", async () => {
+    return expect(async () => loadSass("swass")).rejects.toThrowErrorMatchingSnapshot();
   });
 
-  test("not found", () => {
-    expect(() => loadSass()).toThrowErrorMatchingSnapshot();
+  test("not found", async () => {
+    jest.unstable_mockModule("sass", () => jest.fn());
+    jest.unstable_mockModule("node-sass", () => jest.fn());
+    return expect(async () => loadSass()).rejects.toThrowErrorMatchingSnapshot();
   });
 });
 

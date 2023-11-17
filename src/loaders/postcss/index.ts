@@ -16,10 +16,9 @@ import postcssUrl from "./url";
 import postcssModules from "./modules";
 import postcssICSS from "./icss";
 import postcssNoop from "./noop";
-import { dirname } from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const baseDir = path.dirname(fileURLToPath(import.meta.url));
 
 let injectorId: string;
 const testing = process.env.NODE_ENV === "test";
@@ -101,24 +100,30 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     for (const msg of res.messages)
       switch (msg.type) {
-        case "warning":
+        case "warning": {
           this.warn({ plugin: msg.plugin, message: msg.text as string });
           break;
+        }
 
-        case "icss":
+        case "icss": {
           Object.assign(modulesExports, msg.export as Record<string, string>);
           break;
+        }
 
-        case "dependency":
+        case "dependency": {
           this.deps.add(normalizePath(msg.file as string));
           break;
+        }
 
-        case "asset":
+        case "asset": {
           this.assets.set(msg.to as string, msg.source as Uint8Array);
           break;
+        }
       }
 
-    map = mm(res.map?.toJSON()).resolve(path.dirname(postcssOpts.to)).toString();
+    map = mm(res.map?.toJSON())
+      .resolve(path.dirname(postcssOpts.to))
+      .toString();
 
     if (!options.extract && this.sourceMap) {
       const m = mm(map)
@@ -171,7 +176,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorCall = `${injectorName}(${cssVarName},${JSON.stringify(injectorOptions)});`;
 
         if (!injectorId) {
-          const opts = { basedirs: [path.join(testing ? process.cwd() : __dirname, "runtime")] };
+          const opts = { basedirs: [path.join(testing ? process.cwd() : baseDir, "runtime")] };
           injectorId = await resolveAsync(["./inject-css"], opts);
           injectorId = `"${normalizePath(injectorId)}"`;
         }

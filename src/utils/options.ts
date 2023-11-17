@@ -56,7 +56,7 @@ export function ensureUseOption(opts: Options): [string, Record<string, unknown>
     stylus: ["stylus", opts.stylus ?? {}],
   };
 
-  if (typeof opts.use === "undefined") return Object.values(all);
+  if (opts.use === undefined) return Object.values(all);
   else if (!Array.isArray(opts.use)) throw new TypeError("`use` option must be an array!");
 
   return opts.use.map(loader => {
@@ -76,12 +76,12 @@ export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
 }
 
 export function ensurePCSSPlugins(plugins: Options["plugins"]): AcceptedPlugin[] {
-  if (typeof plugins === "undefined") return [];
+  if (plugins === undefined) return [];
   else if (typeof plugins !== "object")
     throw new TypeError("`plugins` option must be an array or an object!");
 
   const ps: AcceptedPlugin[] = [];
-  for (const p of !Array.isArray(plugins) ? Object.entries(plugins) : plugins) {
+  for (const p of Array.isArray(plugins) ? plugins : Object.entries(plugins)) {
     if (!p) continue;
 
     if (!Array.isArray(p)) {
@@ -90,8 +90,11 @@ export function ensurePCSSPlugins(plugins: Options["plugins"]): AcceptedPlugin[]
     }
 
     const [plug, opts] = p;
-    if (!opts) ps.push(ensurePCSSOption(plug, "plugin"));
-    else ps.push(ensurePCSSOption(plug, "plugin")(opts));
+    if (opts) {
+      ps.push(ensurePCSSOption(plug, "plugin")(opts));
+    } else {
+      ps.push(ensurePCSSOption(plug, "plugin"));
+    }
   }
 
   return ps;

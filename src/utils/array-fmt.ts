@@ -3,12 +3,15 @@ export default (arr: string[]): string =>
     .map((id, i, arr) => {
       const fmt = `\`${id}\``;
       switch (i) {
-        case arr.length - 1:
+        case arr.length - 1: {
           return `or ${fmt}`;
-        case arr.length - 2:
+        }
+        case arr.length - 2: {
           return fmt;
-        default:
+        }
+        default: {
           return `${fmt},`;
+        }
       }
     })
     .join(" ");

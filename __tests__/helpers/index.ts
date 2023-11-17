@@ -6,6 +6,9 @@ import { Plugin, rollup, InputOptions, OutputOptions } from "rollup";
 import styles from "../../src";
 import { Options } from "../../src/types";
 import { inferModeOption, inferSourceMapOption } from "../../src/utils/options";
+import { fileURLToPath } from "url";
+
+const baseDir = path.dirname(fileURLToPath(import.meta.url));
 
 export interface WriteData {
   input: string | string[];
@@ -36,7 +39,7 @@ async function pathExistsAll(files: string[]): Promise<boolean> {
 }
 
 export const fixture = (...args: string[]): string =>
-  path.normalize(path.join(__dirname, "..", "fixtures", ...args));
+  path.normalize(path.join(baseDir, "..", "fixtures", ...args));
 
 export async function write(data: WriteData): Promise<WriteResult> {
   const outDir = fixture("dist", data.outDir ?? data.title ?? "");
@@ -48,7 +51,7 @@ export async function write(data: WriteData): Promise<WriteResult> {
     plugins: data.plugins ?? [styles(data.options)],
     onwarn: (warning, warn) => {
       if (warning.code === "EMPTY_BUNDLE") return;
-      if (warning.plugin === "lit") return;
+      if (warning.exporter === "lit") return;
       if (/Exported `\S+` as `\S+` in \S+/.test(warning.message)) return;
       warn(warning);
     },

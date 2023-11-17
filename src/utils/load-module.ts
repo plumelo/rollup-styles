@@ -1,11 +1,13 @@
 import { resolveSync, ResolveOpts } from "./resolve";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
 const loaded: Record<string, unknown> = {};
 
 const options: ResolveOpts = {
   caller: "Module loader",
   basedirs: [process.cwd()],
-  extensions: [".cjs", ".js", ".mjs", ".json"],
+  extensions: [".js", ".mjs", ".cjs", ".json"],
   preserveSymlinks: false,
   packageFilter: pkg => pkg,
 };

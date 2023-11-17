@@ -1,4 +1,3 @@
-/* eslint-disable import/no-duplicates */
 declare module "postcss-modules-values" {
   import { PluginCreator } from "postcss";
   const plugin: PluginCreator<unknown>;

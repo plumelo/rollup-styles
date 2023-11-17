@@ -9,32 +9,22 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ["18"]
+        node: ["20"]
 
     steps:
       - name: Code checkout
-        uses: actions/checkout@v2
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+        uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: "pnpm"
+          cache: npm
 
       - name: Install dependencies
-        run: |
-          pnpm -v
-          pnpm config set enable-pre-post-scripts true
-          pnpm i --frozen-lockfile
-        env:
-          CI: true
+        run: npm ci
 
       - name: Test
-        run: pnpm t
+        run: npm run test
         env:
-          CI: true
+          NODE_OPTIONS: --experimental-vm-modules

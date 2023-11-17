@@ -22,7 +22,7 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
 }
 
 export const stripMap = (code: string): string =>
-  code.replace(mapBlockRe, "").replace(mapLineRe, "");
+  code.replaceAll(mapBlockRe, "").replaceAll(mapLineRe, "");
 
 class MapModifier {
   private readonly map?: RawSourceMap;
