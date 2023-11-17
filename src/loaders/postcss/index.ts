@@ -16,6 +16,10 @@ import postcssUrl from "./url";
 import postcssModules from "./modules";
 import postcssICSS from "./icss";
 import postcssNoop from "./noop";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 let injectorId: string;
 const testing = process.env.NODE_ENV === "test";
