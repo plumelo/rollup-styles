@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/plumelo/rollup-styles/compare/v1.1.0...v1.2.0) (2023-11-17)
+
+
+### Features
+
+* update dependencies ([9d02f26](https://github.com/plumelo/rollup-styles/commit/9d02f26e3c83f0bb177adf05018da8121461fd4f))
+* use npm ([ce86527](https://github.com/plumelo/rollup-styles/commit/ce86527293ec7dfb16828eb553ca772d6f73f77e))
+
 # [1.1.0](https://github.com/plumelo/rollup-styles/compare/v1.0.0...v1.1.0) (2023-11-17)
 
 
