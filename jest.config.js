@@ -14,7 +14,6 @@ module.exports = {
   testEnvironment: "node",
   transform: { "^.+\\.tsx?$": "ts-jest", "^.+\\.jsx?$": "babel-jest" },
   transformIgnorePatterns,
-  globals: { "ts-jest": { tsconfig: { target: "ES2021", module: "commonjs" } } },
   testMatch: ["<rootDir>/__tests__/*.(spec|test).[jt]s?(x)"],
   setupFilesAfterEnv: ["<rootDir>/__tests__/setup.ts"],
   collectCoverageFrom: [
