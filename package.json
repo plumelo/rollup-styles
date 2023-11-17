@@ -1,6 +1,6 @@
 {
   "name": "rollup-styles",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Universal Rollup plugin for styles: PostCSS, Sass, Less, Stylus and more",
   "keywords": [
     "rollup",

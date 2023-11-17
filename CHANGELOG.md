@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/plumelo/rollup-styles/compare/v1.2.0...v1.3.0) (2023-11-17)
+
+
+### Features
+
+* more es6 support ([c4bcb55](https://github.com/plumelo/rollup-styles/commit/c4bcb556165d740db045e3d6ce0f0019127b99b5))
+
 # [1.2.0](https://github.com/plumelo/rollup-styles/compare/v1.1.0...v1.2.0) (2023-11-17)
 
 
