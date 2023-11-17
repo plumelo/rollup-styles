@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/plumelo/rollup-styles/compare/v1.0.0...v1.1.0) (2023-11-17)
+
+
+### Features
+
+* export types ([7f6ec74](https://github.com/plumelo/rollup-styles/commit/7f6ec74a12906e37de6c4d7b72d51076bdd8f3c7))
+
 # 1.0.0 (2023-11-17)
 
 
