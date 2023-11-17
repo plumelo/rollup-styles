@@ -1,11 +1,11 @@
-# rollup-plugin-styles
+# rollup-styles
 
-[![npm version](https://img.shields.io/npm/v/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
+[![npm version](https://img.shields.io/npm/v/rollup-styles)](https://www.npmjs.com/package/rollup-styles)
 [![monthly downloads count](https://img.shields.io/npm/dm/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
-[![required rollup version](https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
-[![build status](https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
-[![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/main/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
-[![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
+[![required rollup version](https://img.shields.io/npm/dependency-version/rollup-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
+[![build status](https://github.com/plumelo/rollup-styles/workflows/CI/badge.svg)](https://github.com/plumelo/rollup-styles/actions?query=workflow%3ACI)
+[![code coverage](https://codecov.io/gh/plumelo/rollup-styles/branch/main/graph/badge.svg)](https://codecov.io/gh/plumelo/rollup-styles)
+[![license](https://img.shields.io/github/license/plumelo/rollup-styles)](./LICENSE)
 [![financial contributors](https://opencollective.com/rollup-plugin-styles/tiers/badge.svg)](https://opencollective.com/rollup-plugin-styles)
 
 ### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
@@ -41,18 +41,18 @@
 
 ```bash
 # npm
-npm install -D rollup-plugin-styles
+npm install -D rollup-styles
 # pnpm
-pnpm add -D rollup-plugin-styles
+pnpm add -D rollup-styles
 # yarn
-yarn add rollup-plugin-styles --dev
+yarn add rollup-styles --dev
 ```
 
 ## Usage
 
 ```js
 // rollup.config.js
-import styles from "rollup-plugin-styles";
+import styles from "rollup-styles";
 
 export default {
   output: {
@@ -150,7 +150,7 @@ styles({
 
 ```js
 // rollup.config.js
-import styles from "rollup-plugin-styles";
+import styles from "rollup-styles";
 
 // Any plugin which consumes pure CSS
 import litcss from "rollup-plugin-lit-css";
