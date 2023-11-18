@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/plumelo/rollup-styles/compare/v1.3.0...v1.4.0) (2023-11-18)
+
+
+### Features
+
+* improve esm support ([b1ded31](https://github.com/plumelo/rollup-styles/commit/b1ded31754a3ccdc73fa1a0786c7f2918da32d7e))
+
 # [1.3.0](https://github.com/plumelo/rollup-styles/compare/v1.2.0...v1.3.0) (2023-11-17)
 
 
