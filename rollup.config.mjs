@@ -26,7 +26,7 @@ const config = [
       { format: "es", file: pkg.exports.import, exports: "default" },
     ],
     plugins: [
-      externals({ deps: true }),
+      externals({ deps: true, devDeps: true }),
       replace({
         preventAssignment: true,
         "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
