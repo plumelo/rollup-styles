@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/plumelo/rollup-styles/compare/v1.4.0...v1.5.0) (2023-11-18)
+
+
+### Features
+
+* ignore dev deps ([1e756f1](https://github.com/plumelo/rollup-styles/commit/1e756f10f0f47edd7257ad6e8a3ed3c2ea6b5750))
+
 # [1.4.0](https://github.com/plumelo/rollup-styles/compare/v1.3.0...v1.4.0) (2023-11-18)
 
 
