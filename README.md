@@ -1,11 +1,11 @@
-# rollup-styles
+# rollup-plugin-styler
 
-[![npm version](https://img.shields.io/npm/v/rollup-styles)](https://www.npmjs.com/package/rollup-styles)
-[![monthly downloads count](https://img.shields.io/npm/dm/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
-[![required rollup version](https://img.shields.io/npm/dependency-version/rollup-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
-[![build status](https://github.com/plumelo/rollup-styles/workflows/CI/badge.svg)](https://github.com/plumelo/rollup-styles/actions?query=workflow%3ACI)
-[![code coverage](https://codecov.io/gh/plumelo/rollup-styles/branch/main/graph/badge.svg)](https://codecov.io/gh/plumelo/rollup-styles)
-[![license](https://img.shields.io/github/license/plumelo/rollup-styles)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/rollup-plugin-styler)](https://www.npmjs.com/package/rollup-plugin-styler)
+[![monthly downloads count](https://img.shields.io/npm/dm/rollup-plugin-styler)](https://www.npmjs.com/package/rollup-plugin-styler)
+[![required rollup version](https://img.shields.io/npm/dependency-version/rollup-plugin-styler/peer/rollup)](https://www.npmjs.com/package/rollup)
+[![build status](https://github.com/plumelo/rollup-plugin-styler/workflows/CI/badge.svg)](https://github.com/plumelo/rollup-plugin-styler/actions?query=workflow%3ACI)
+[![code coverage](https://codecov.io/gh/plumelo/rollup-plugin-styler/branch/main/graph/badge.svg)](https://codecov.io/gh/plumelo/rollup-plugin-styler)
+[![license](https://img.shields.io/github/license/plumelo/rollup-plugin-styler)](./LICENSE)
 [![financial contributors](https://opencollective.com/rollup-plugin-styles/tiers/badge.svg)](https://opencollective.com/rollup-plugin-styles)
 
 ### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
@@ -41,18 +41,18 @@
 
 ```bash
 # npm
-npm install -D rollup-styles
+npm install -D rollup-plugin-styler
 # pnpm
-pnpm add -D rollup-styles
+pnpm add -D rollup-plugin-styler
 # yarn
-yarn add rollup-styles --dev
+yarn add rollup-plugin-styler --dev
 ```
 
 ## Usage
 
 ```js
 // rollup.config.js
-import styles from "rollup-styles";
+import styles from "rollup-plugin-styler";
 
 export default {
   output: {
@@ -150,7 +150,7 @@ styles({
 
 ```js
 // rollup.config.js
-import styles from "rollup-styles";
+import styles from "rollup-plugin-styler";
 
 // Any plugin which consumes pure CSS
 import litcss from "rollup-plugin-lit-css";
