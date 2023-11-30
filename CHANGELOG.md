@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.5.0...v1.6.0) (2023-11-30)
+
+
+### Features
+
+* rename package again (last time) ([58370bc](https://github.com/plumelo/rollup-plugin-styler/commit/58370bc20923e4a11a9c330e58af1902a40f4b07))
+
 # [1.5.0](https://github.com/plumelo/rollup-styles/compare/v1.4.0...v1.5.0) (2023-11-18)
 
 
