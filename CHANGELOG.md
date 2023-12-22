@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.6.0...v1.7.0) (2023-12-22)
+
+
+### Features
+
+* adjust p-queue import ([076a5de](https://github.com/plumelo/rollup-plugin-styler/commit/076a5de1a6589fb6879713fa257767a5e3929531))
+* update p-queue import ([29e3577](https://github.com/plumelo/rollup-plugin-styler/commit/29e357779241695ff04baaa72d3d54b88319781f))
+
 # [1.6.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.5.0...v1.6.0) (2023-11-30)
 
 
