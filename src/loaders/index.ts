@@ -33,7 +33,7 @@ export default class Loaders {
   private readonly use: Map<string, Record<string, unknown>>;
   private readonly test: (file: string) => boolean;
   private readonly loaders = new Map<string, Loader>();
-  private workQueue: PQueue;
+  private workQueue?: PQueue;
 
   constructor(options: LoadersOptions) {
     this.use = new Map(options.use.reverse());
