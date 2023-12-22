@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import PQueue from "p-queue";
+import type PQueue from "p-queue";
 import { Loader, LoaderContext, Payload } from "./types";
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
@@ -19,7 +18,6 @@ function matchFile(file: string, condition: Loader["test"]): boolean {
 const threadPoolSize = process.env.UV_THREADPOOL_SIZE
   ? Number.parseInt(process.env.UV_THREADPOOL_SIZE)
   : 4; // default `libuv` threadpool size
-const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 /** Options for {@link Loaders} class */
 interface LoadersOptions {
@@ -35,6 +33,7 @@ export default class Loaders {
   private readonly use: Map<string, Record<string, unknown>>;
   private readonly test: (file: string) => boolean;
   private readonly loaders = new Map<string, Loader>();
+  private workQueue: PQueue;
 
   constructor(options: LoadersOptions) {
     this.use = new Map(options.use.reverse());
@@ -59,6 +58,12 @@ export default class Loaders {
   }
 
   async process(payload: Payload, context: LoaderContext): Promise<Payload> {
+    if (!this.workQueue) {
+      // eslint-disable-next-line import/no-unresolved
+      const { default: pQueue } = await import("p-queue");
+      this.workQueue = new pQueue({ concurrency: threadPoolSize - 1 });
+    }
+    const workQueue = this.workQueue;
     for await (const [name, options] of this.use) {
       const loader = this.loaders.get(name);
       if (!loader) continue;
