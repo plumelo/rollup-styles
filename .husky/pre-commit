@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm t -- --no-cache
-pnpm exec -- lint-staged
+npm test -- --no-cache
+npm run lint-staged
