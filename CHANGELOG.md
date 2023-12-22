@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.7.0...v1.8.0) (2023-12-22)
+
+
+### Features
+
+* correct workQueue def ([8c3e71d](https://github.com/plumelo/rollup-plugin-styler/commit/8c3e71d691ba8934c804a9963a62f7fcaccf838b))
+
 # [1.7.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.6.0...v1.7.0) (2023-12-22)
 
 
