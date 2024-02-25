@@ -6,7 +6,7 @@ export default async function (impl?: string): Promise<[sass.Sass, string]> {
   // Loading provided implementation
   if (impl) {
     return import(impl)
-      .then(({ default: provided }: { default?: sass.Sass } = {}) => {
+      .then((provided: sass.Sass) => {
         if (provided) return [provided, impl] as [sass.Sass, string];
         throw undefined;
       })
