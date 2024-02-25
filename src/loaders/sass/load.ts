@@ -18,7 +18,7 @@ export default async function (impl?: string): Promise<[sass.Sass, string]> {
   // Loading one of the supported modules
   for (const id of ids) {
     // eslint-disable-next-line no-await-in-loop
-    const sass = await import(id).then((m: { default?: sass.Sass }) => m.default);
+    const sass = (await import(id)) as sass.Sass;
     if (sass) return [sass, id];
   }
 
