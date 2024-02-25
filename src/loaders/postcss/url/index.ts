@@ -76,9 +76,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
       if (!css.source?.input.file) return;
 
       const { file } = css.source.input;
-      const map = mm(css.source.input.map?.text)
-        .resolve(path.dirname(file))
-        .toConsumer();
+      const map = mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
 
       const urlList: {
         node: Node;

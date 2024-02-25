@@ -94,7 +94,7 @@
     "@types/node": "^20.9.1",
     "@types/resolve": "^1.20.5",
     "@types/stylus": "^0.48.42",
-    "@types/uglifycss": "^0.0.10",
+    "@types/uglifycss": "^0.0.11",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.16",
